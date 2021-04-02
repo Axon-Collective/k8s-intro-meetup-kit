@@ -5,9 +5,9 @@ steps:
     env:
     - 'PORT=8080'
 
-  - id: 'push image'
-    name: 'gcr.io/cloud-builders/docker'
-    args: ['push', '-a', 'gcr.io/${PROJECT_ID}/fantomimage']
+  # - id: 'push image 1'
+  #   name: 'gcr.io/cloud-builders/docker'
+  #   args: ['push', '-a', 'gcr.io/${PROJECT_ID}/fantomimage']
 
 images:
   - 'gcr.io/${PROJECT_ID}/fantomimage:$COMMIT_SHA'
