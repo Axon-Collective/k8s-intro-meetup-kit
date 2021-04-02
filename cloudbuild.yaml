@@ -7,7 +7,7 @@ steps:
 
   - id: 'push image'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/${PROJECT_ID}/fantomimage', '--all-tags']
+    args: ['push', '--all-tags', 'gcr.io/${PROJECT_ID}/fantomimage']
 
 images:
   - 'gcr.io/${PROJECT_ID}/fantomimage:$COMMIT_SHA'
