@@ -1,13 +1,14 @@
 steps:
   - id: 'build image'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/${PROJECT_ID}/fantomimage:$COMMIT_SHA', '.']
+    args: ['build', '-t', 'gcr.io/${PROJECT_ID}/fantomimage:$COMMIT_SHA', '-t', 'gcr.io/${PROJECT_ID}/fantomimage:latest', '.']
     env:
     - 'PORT=8080'
 
   - id: 'push image'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/${PROJECT_ID}/fantomimage:$COMMIT_SHA']
+    args: ['push', 'gcr.io/${PROJECT_ID}/fantomimage', '--all-tags']
 
 images:
   - 'gcr.io/${PROJECT_ID}/fantomimage:$COMMIT_SHA'
+  - 'gcr.io/${PROJECT_ID}/fantomimage:latest'
